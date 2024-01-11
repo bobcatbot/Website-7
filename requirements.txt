@@ -1,4 +1,4 @@
-Flask
+Flask[async]
 zenora
 py-cord
 pymongo
