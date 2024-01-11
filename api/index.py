@@ -1086,14 +1086,4 @@ class guild_models:
 async def on_ready():
   print(f'We have logged in as {bot.user}')
 
-import os
-
-if os.getenv('ENV') != 'production':
-  def run():
-    app.run(host='0.0.0.0', port=8000)
-  async def keep_alive():
-    Thread(target=run).start()
-
-  bot.loop.create_task(keep_alive())
-
 bot.run(BOT_TOKEN)
