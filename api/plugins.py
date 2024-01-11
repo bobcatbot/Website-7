@@ -1,4 +1,4 @@
-from plugin_list import plugins
+from .plugin_list import plugins
 
 def fetch_plugins(dash):
   plugins_dict = list(plugins.items())
