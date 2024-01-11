@@ -1082,8 +1082,3 @@ class guild_models:
     premiumStatus = data['premium']['status']
     return premiumStatus
 
-@bot.event
-async def on_ready():
-  print(f'We have logged in as {bot.user}')
-
-bot.run(BOT_TOKEN)
