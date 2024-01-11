@@ -16,5 +16,5 @@ mongoURI_dash = os.environ['mongoURI_dash']
 stripe_config = {
   "PUBLIC_KEY": os.environ['STRIPE_PUBLIC_KEY'],
   "SECRET_KEY": os.environ['STRIPE_SECRET_KEY'],
-  "WH_KEY": os.environ['STRIPE_WH_KEY']
+  "WH_KEY": os.environ['STRIPE_WH_KEY'],
 }
