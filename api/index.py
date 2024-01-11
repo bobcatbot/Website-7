@@ -1087,13 +1087,13 @@ async def on_ready():
   print(f'We have logged in as {bot.user}')
 
 import os
-def run():
-  app.run(host='0.0.0.0', port=8000)
-async def keep_alive():
-  Thread(target=run).start()
 
-if __name__ == "__main__":
-  if os.getenv('ENV') != 'production':
-    bot.loop.create_task(keep_alive())
+if os.getenv('ENV') != 'production':
+  def run():
+    app.run(host='0.0.0.0', port=8000)
+  async def keep_alive():
+    Thread(target=run).start()
 
-  bot.run(BOT_TOKEN)
+  bot.loop.create_task(keep_alive())
+
+bot.run(BOT_TOKEN)
