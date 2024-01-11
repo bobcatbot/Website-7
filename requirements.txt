@@ -5,3 +5,4 @@ pymongo
 pytz
 requests
 stripe
+python-dotenv
