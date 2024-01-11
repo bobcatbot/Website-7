@@ -1,18 +1,13 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-.vscode
-
-# dependencies
-/node_modules
-venv
-
-# local env files
-.env
-.env*.local
-
-# vercel
 .vercel
-
-##
+*.log
 *.pyc
-__pycache__/
+__pycache__
+
+# Environments 
+.env 
+.venv 
+env/ 
+venv/ 
+ENV/ 
+env.bak/ 
+venv.bak/ 
