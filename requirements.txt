@@ -1,0 +1,7 @@
+Flask
+zenora
+py-cord
+pymongo
+pytz
+requests
+stripe
