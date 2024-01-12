@@ -2,7 +2,7 @@ import logging, asyncio
 import discord, pymongo, pytz, requests, stripe
 from .plugins import fetch_plugins
 from .consts import premium_faqs, premium_types, langs, tz
-from .config import URL_BASE, BOT_TOKEN, CLIENT_ID, CLIENT_SECRET, OAUTH_URL, REDIRECT_URI, mongoURI_db, stripe_config
+from .config import URL_BASE, PY_ENV, BOT_TOKEN, CLIENT_ID, CLIENT_SECRET, OAUTH_URL, REDIRECT_URI, mongoURI_db, stripe_config
 from threading import Thread
 from zenora import APIClient
 from flask import Flask, redirect, url_for, render_template, request, flash, session, jsonify
@@ -19,7 +19,7 @@ app.config["STRIPE_WEBHOOK_KEY"] = stripe_config["WH_KEY"]
 bot = discord.Client(intents=discord.Intents.all())
 client = APIClient(BOT_TOKEN, client_secret=CLIENT_SECRET)
 
-logging.getLogger('werkzeug').setLevel(logging.ERROR)
+# logging.getLogger('werkzeug').setLevel(logging.ERROR)
 
 MongoClientBot = pymongo.MongoClient(mongoURI_db)
 db = MongoClientBot['Bot']['Bot']
@@ -77,7 +77,6 @@ def update_config(guild_id: int, key: str, value):
 @app.errorhandler(404)
 async def redirect_error_page(e):
   return render_template('error/404.html'), 404
-
 
 ## Main web ##
 @app.route("/")
@@ -1082,3 +1081,19 @@ class guild_models:
     premiumStatus = data['premium']['status']
     return premiumStatus
 
+import os
+
+@bot.event
+async def on_ready():
+  print(f'We have logged in as {bot.user}')
+
+def run_app():
+  app.run(host='0.0.0.0', port=8000)
+async def keep_alive():
+  Thread(target=run_app).start()
+
+if __name__ == "__main__":
+  if PY_ENV == 'development':
+    bot.loop.create_task(keep_alive())
+  
+  bot.run(BOT_TOKEN)

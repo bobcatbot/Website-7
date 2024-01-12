@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 URL_BASE = os.getenv('URL_BASE')
+PY_ENV = os.getenv('ENV')
 
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 CLIENT_ID = os.getenv('CLIENT_ID')
