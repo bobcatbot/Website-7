@@ -1087,6 +1087,8 @@ import os
 async def on_ready():
   print(f'We have logged in as {bot.user}')
 
+  bot.get_channel(1110277292124536953).send('Bot on vercel is online')
+
 def run_app():
   app.run(host='0.0.0.0', port=8000)
 async def keep_alive():
